@@ -1,5 +1,4 @@
 node_modules
-config/keys.prod.js
 config/keys.dev.js
 
 # Editor directories and files
