@@ -1,0 +1,34 @@
+{
+  "name": "comments-component",
+  "version": "1.0.0",
+  "main": "app.js",
+  "description": "Comment component for a static site",
+  "keywords": [
+    "express",
+    "mongodb",
+    "socket.io"
+  ],
+  "author": {
+    "name": "Alex Radin",
+    "email": "web.alexradin@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "email-validator": "^2.0.4",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.15",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
