@@ -13,8 +13,8 @@ app.use(require('cors')())
 const http = require('http').Server(app)
 app.get('*',(req, res)=> res.sendFile(path.join(__dirname + '/cat.html')))
 const io = require('socket.io')
-const {getCommentsByArticleOwnId, createComment} = require("./controllers/comment")
-const {registration, login} = require("./controllers/auth")
+const {getCommentsByArticleOwnId, createComment} = require('./controllers/comment')
+const {registration, login} = require('./controllers/auth')
 
 const port = process.env.PORT || 5000
 
@@ -30,7 +30,7 @@ socket.on('connection', (socket) => {
     })
 
     socket.on("disconnect", () => {
-        console.log("user disconnected")
+        console.log('user disconnected')
     })
     socket.on('registration', function (data) {
         registration(data).then(res => {
@@ -48,10 +48,10 @@ socket.on('connection', (socket) => {
         })
     })
     socket.on('end', function () {
-        console.log("user End")
+        console.log("user left")
         socket.disconnect(true)
     })
-    socket.on("add comment", function (comment) {
+    socket.on('add comment', function (comment) {
         // insert comment into database
         createComment(comment)
           .then(res => {
