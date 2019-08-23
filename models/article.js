@@ -1,15 +1,16 @@
-const  mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+
 const articleSchema = new Schema({
-    ownId : {
+    ownId: {
         type: String,
-        required : true,
+        required: true,
         unique: true
     },
-    title : {
+    title: {
         type: String,
-        required : true
+        required: true
     }
-});
+})
 
-module.exports = mongoose.model('article', articleSchema);
+module.exports = mongoose.model('article', articleSchema)

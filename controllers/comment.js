@@ -1,16 +1,12 @@
 const Comment = require('../models/comment')
 const Article = require('../models/article')
 
-
-
 module.exports.createComment = async (req) => {
-    console.log('пришло--',req)
     let articleId = null
     const article = await Article.findOne({
         ownId: req.article.ownId
     })
     if (!article) {
-        console.log('не артикл', req.article.ownId)
         const newArticle = new Article({
             ownId: req.article.ownId,
             title: req.article.title
@@ -34,11 +30,8 @@ module.exports.createComment = async (req) => {
 }
 
 module.exports.getCommentsByArticleOwnId = async (req) => {
-
     try {
-        const article = await Article.findOne({
-            ownId: req
-        })
+        const article = await Article.findOne({ownId: req})
         if (!article) return []
 
         class CleanedComment {
@@ -49,6 +42,7 @@ module.exports.getCommentsByArticleOwnId = async (req) => {
                 this.datetime = datetime
             }
         }
+
         const comments = await Comment.find({
             article: article._id
         })
