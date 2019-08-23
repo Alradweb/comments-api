@@ -17,15 +17,7 @@ const commentSchema = new Schema({
     article : {
         ref: 'article',
         type: Schema.Types.ObjectId
-    },
-    // avatar: {
-    //     type: String,
-    //
-    // }
+    }
 })
-// commentSchema.virtual('authorsAvatar', {
-//     ref: 'users',
-//     localField: 'avatar',
-//     foreignField: 'avatar'
-// });
+
 module.exports = mongoose.model('comment', commentSchema);

@@ -73,7 +73,7 @@ module.exports.registration = async (req) => {
         const hash = bcrypt.hashSync(password, salt)
         const user = new User({
             email: req.email,
-            name: req.name,
+            name: req.name ? req.name : 'Я здесь инкогнито',
             password: hash,
             avatar: req.avatar || '',
             remember: req.remember

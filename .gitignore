@@ -1,5 +1,3 @@
 node_modules
 config/keys.dev.js
-
-# Editor directories and files
 .idea

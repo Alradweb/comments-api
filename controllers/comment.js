@@ -4,19 +4,19 @@ const Article = require('../models/article')
 
 
 module.exports.createComment = async (req) => {
+    console.log('пришло--',req)
     let articleId = null
     const article = await Article.findOne({
-        ownerId: req.article.ownerId
+        ownId: req.article.ownId
     })
     if (!article) {
-        const article = new Article({
-            ownerId: req.article.ownerId,
+        console.log('не артикл', req.article.ownId)
+        const newArticle = new Article({
+            ownId: req.article.ownId,
             title: req.article.title
         })
-        const middleResult = await article.save()
+        const middleResult = await newArticle.save()
         articleId = middleResult._id
-        //console.log('middleResult', middleResult)
-        //return null
     } else {
         articleId = article._id
     }
@@ -29,15 +29,15 @@ module.exports.createComment = async (req) => {
         await comment.save()
         return {comment}
     } catch (e) {
-        return {errorMessage: e.message}
+        throw e
     }
 }
 
-module.exports.getCommentsByArticleOwnerId = async (req) => {
+module.exports.getCommentsByArticleOwnId = async (req) => {
 
     try {
         const article = await Article.findOne({
-            ownerId: req
+            ownId: req
         })
         if (!article) return []
 
@@ -58,7 +58,7 @@ module.exports.getCommentsByArticleOwnerId = async (req) => {
             return new CleanedComment(c.content, c.author, c.datetime)
         })
     } catch (e) {
-        return {errorMessage: e.message}
+        throw e
     }
 }
 
